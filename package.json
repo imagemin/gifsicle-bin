@@ -1,7 +1,7 @@
 {
   "name": "gifsicle-bin",
   "version": "0.1.0",
-  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to losslessly minify JPEG images.",
+  "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to manipulate gif images in different ways.",
   "keywords": [
     "gif",
     "img",
