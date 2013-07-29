@@ -1,0 +1,45 @@
+{
+  "name": "gifsicle-bin",
+  "version": "0.1.0",
+  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to losslessly minify JPEG images.",
+  "keywords": [
+    "gif",
+    "img",
+    "image",
+    "compress",
+    "minify",
+    "optimize"
+  ],
+  "homepage": "https://github.com/yeoman/node-gifsicle-bin",
+  "bugs": "https://github.com/yeoman/node-gifsicle-bin/issues",
+  "author": {
+    "name": "Kevin Martensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "http://kevinmartensson.com"
+  },
+  "main": "lib/gifsicle-bin.js",
+  "bin": "bin/gifsicle-bin",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yeoman/node-gifsicle-bin.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "postinstall": "node pre-build.js"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "dependencies": {
+    "colors": "~0.6.0",
+    "which": "~1.0.5",
+    "mocha": "~1.9.0",
+    "tar": "~0.1.17",
+    "request": "~2.16.6"
+  }
+}
