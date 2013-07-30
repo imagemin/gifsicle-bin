@@ -4,7 +4,7 @@
 var fs = require('fs');
 var exec = require('child_process').exec;
 var assert = require('assert');
-var binPath = require('../lib/gifsicle-bin.js').path;
+var binPath = require('../lib/gifsicle-bin').path;
 
 describe('Gifsicle rebuild', function () {
 	it('it should rebuild the gifsicle binaries', function (cb) {

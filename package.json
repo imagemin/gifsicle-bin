@@ -1,7 +1,7 @@
 {
   "name": "gifsicle-bin",
   "version": "0.1.0",
-  "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to manipulate gif images in different ways.",
+  "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "gif",
     "img",
@@ -10,36 +10,29 @@
     "minify",
     "optimize"
   ],
-  "homepage": "https://github.com/yeoman/node-gifsicle-bin",
-  "bugs": "https://github.com/yeoman/node-gifsicle-bin/issues",
+  "homepage": "https://github.com/yeoman/node-gifsicle",
+  "bugs": "https://github.com/yeoman/node-gifsicle/issues",
   "author": {
     "name": "Kevin Martensson",
     "email": "kevinmartensson@gmail.com",
     "url": "http://kevinmartensson.com"
   },
+  "license": "BSD",
+  "repository": "git://github.com/yeoman/node-gifsicle.git",
   "main": "lib/gifsicle-bin.js",
   "bin": "bin/gifsicle-bin",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yeoman/node-gifsicle-bin.git"
-  },
   "scripts": {
     "test": "mocha",
-    "postinstall": "node pre-build.js"
+    "postinstall": "node lib/check.js"
   },
-  "engines": {
-    "node": ">=0.8.0"
-  },
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ],
   "dependencies": {
     "colors": "~0.6.0",
     "which": "~1.0.5",
-    "mocha": "~1.9.0",
+    "mocha": "~1.12.0",
     "tar": "~0.1.17",
-    "request": "~2.16.6"
+    "request": "~2.25.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
   }
 }

@@ -1,7 +1,7 @@
 vendor/
-.npmignore
 .editorconfig
-.jshintrc
 .gitattributes
+.jshintrc
+.npmignore
 .travis.yml
 contributing.md
