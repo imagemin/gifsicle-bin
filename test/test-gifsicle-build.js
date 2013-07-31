@@ -3,7 +3,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var exec = require('child_process').exec;
 var assert = require('assert');
 var binPath = require('../lib/gifsicle-bin').path;
 var srcUrl = require('../lib/gifsicle-bin').src;
