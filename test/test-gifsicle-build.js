@@ -12,7 +12,7 @@ describe('Gifsicle rebuild', function () {
 		this.timeout(false);
 
 		var origCTime = fs.statSync(binPath).ctime;
-		exec('node lib/check.js runBuild', {}, function (err) {
+		exec('node lib/check.js', {}, function (err) {
 			var actualCTime = fs.statSync(binPath).ctime;
 			assert(actualCTime !== origCTime);
 			cb(err);
