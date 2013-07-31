@@ -1,4 +1,4 @@
-# node-gifsicle-bin [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle-bin.png?branch=master)](http://travis-ci.org/yeoman/node-gifsicle-bin)
+# node-gifsicle [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle.png?branch=master)](http://travis-ci.org/yeoman/node-gifsicle)
 
 gifsicle 1.71 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to manipulate gif images in different ways.
 
@@ -9,14 +9,14 @@ gifsicle 1.71 Node.js wrapper that makes it seamlessly available as a local depe
 
 ```js
 var execFile = require('child_process').execFile;
-var gifsiclePath = require('gifsicle-bin').path;
+var gifsiclePath = require('gifsicle').path;
 
 execFile(gifsiclePath, ['-o', 'output.gif', 'input.gif'], function(err, stdout) {
 	console.log('Image minified');
 });
 ```
 
-You can also run directly from `./node_modules/.bin/gifsicle-bin`
+You can also run directly from `./node_modules/.bin/gifsicle`
 
 
 ## Dev
