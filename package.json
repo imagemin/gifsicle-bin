@@ -1,6 +1,6 @@
 {
   "name": "gifsicle",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "gif",
@@ -19,8 +19,8 @@
   },
   "license": "BSD",
   "repository": "git://github.com/yeoman/node-gifsicle.git",
-  "main": "lib/gifsicle-bin.js",
-  "bin": "bin/gifsicle-bin",
+  "main": "lib/gifsicle",
+  "bin": "bin/gifsicle.js",
   "scripts": {
     "test": "mocha",
     "postinstall": "node lib/check.js"

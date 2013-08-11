@@ -3,8 +3,8 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
-var binPath = require('../lib/gifsicle-bin').path;
-var srcUrl = require('../lib/gifsicle-bin').src;
+var binPath = require('../lib/gifsicle').path;
+var srcUrl = require('../lib/gifsicle').src;
 var util = require('../lib/util');
 
 describe('Gifsicle rebuild', function () {
