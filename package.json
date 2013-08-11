@@ -20,7 +20,9 @@
   "license": "BSD",
   "repository": "git://github.com/yeoman/node-gifsicle.git",
   "main": "lib/gifsicle",
-  "bin": "bin/gifsicle.js",
+  "bin": {
+    "gifsicle": "bin/gifsicle.js"
+  },
   "scripts": {
     "test": "mocha",
     "postinstall": "node lib/check.js"
