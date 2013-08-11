@@ -35,5 +35,11 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "files": [
+    "bin",
+    "lib",
+    "test",
+    "vendor"
+  ]
 }
