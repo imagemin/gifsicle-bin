@@ -1,6 +1,5 @@
 /*global describe, it */
 'use strict';
-
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
