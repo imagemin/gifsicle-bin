@@ -20,7 +20,7 @@ describe('gifsicle', function () {
 	});
 
 	it('should successfully proxy gifsicle', function (cb) {
-		var binPath = path.join(__dirname, '../bin/gifsicle');
+		var binPath = path.join(__dirname, '../bin/gifsicle.js');
 
 		execFile('node', [binPath, '--version', '-'], function (err, stdout) {
 			assert(stdout.toString().indexOf('Gifsicle') !== -1);
@@ -29,7 +29,7 @@ describe('gifsicle', function () {
 	});
 
 	it('should minify a .gif', function (cb) {
-		var binPath = path.join(__dirname, '../bin/gifsicle');
+		var binPath = path.join(__dirname, '../bin/gifsicle.js');
 		var args = [
 			'-o', path.join(__dirname, 'minified.gif'),
 			path.join(__dirname, 'fixtures', 'test.gif')
