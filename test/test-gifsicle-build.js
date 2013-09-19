@@ -1,23 +1,28 @@
 /*global describe, it */
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var assert = require('assert');
-var gifsicle = require('../lib/gifsicle');
-var util = require('../lib/util');
-var binPath = gifsicle.path;
-var srcUrl = gifsicle.src;
 
-describe('Gifsicle rebuild', function () {
-	it('it should rebuild the gifsicle binaries', function (cb) {
-		// Give this test time to build
+var assert = require('assert');
+var Bin = require('bin-wrapper');
+var fs = require('fs');
+var options = require('../lib/gifsicle').options;
+var path = require('path');
+
+describe('gifsicle.build()', function () {
+	it('should rebuild the gifsicle binaries', function (cb) {
 		this.timeout(false);
 
-		var origCTime = fs.statSync(binPath).ctime;
-		util.build(srcUrl, path.dirname(binPath), function (err) {
-			var actualCTime = fs.statSync(binPath).ctime;
+		options.path = path.join(__dirname, '../tmp');
+		options.buildScript = './configure --disable-gifview --disable-gifdiff --bindir="' + path.join(__dirname, '../tmp') +
+							  '" && make install';
+
+		var bin = new Bin(options);
+
+		bin.build(function () {
+			var origCTime = fs.statSync(bin.path).ctime;
+			var actualCTime = fs.statSync(bin.path).ctime;
+
 			assert(actualCTime !== origCTime);
-			cb(err);
-		}).path;
+			cb();
+		});
 	});
 });

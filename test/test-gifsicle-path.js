@@ -1,11 +1,12 @@
 /*global describe, it, after */
 'use strict';
+
+var assert = require('assert');
+var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
-var execFile = require('child_process').execFile;
-var assert = require('assert');
 
-describe('gifsicle', function () {
+describe('gifsicle()', function () {
 	after(function () {
 		fs.unlinkSync('test/minified.gif');
 	});
@@ -38,6 +39,7 @@ describe('gifsicle', function () {
 		execFile('node', [binPath].concat(args), function () {
 			var actual = fs.statSync('test/minified.gif').size;
 			var original = fs.statSync('test/fixtures/test.gif').size;
+
 			assert(actual < original);
 			cb();
 		});
