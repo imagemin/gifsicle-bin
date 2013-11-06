@@ -14,6 +14,7 @@ describe('gifsicle.build()', function () {
 
 		bin.path = path.join(__dirname, '../tmp', bin.bin);
 		bin.buildScript = './configure --disable-gifview --disable-gifdiff ' +
+				 		  '--prefix="' + path.join(__dirname, '../tmp') + '" ' +
 				 		  '--bindir="' + path.join(__dirname, '../tmp') + '" && ' +
 				 		  'make install';
 
