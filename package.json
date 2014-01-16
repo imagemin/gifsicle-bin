@@ -10,15 +10,13 @@
     "minify",
     "optimize"
   ],
-  "homepage": "https://github.com/yeoman/node-gifsicle",
-  "bugs": "https://github.com/yeoman/node-gifsicle/issues",
   "author": {
     "name": "Kevin Martensson",
     "email": "kevinmartensson@gmail.com",
     "url": "http://kevinmartensson.com"
   },
   "license": "BSD",
-  "repository": "git://github.com/yeoman/node-gifsicle.git",
+  "repository": "yeoman/node-gifsicle",
   "main": "lib/gifsicle",
   "bin": {
     "gifsicle": "bin/gifsicle.js"
@@ -29,13 +27,13 @@
   },
   "dependencies": {
     "bin-wrapper": "~0.1.3",
-    "chalk": "~0.2.0"
+    "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "~1.13.0"
+    "mocha": "*"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.0"
   },
   "files": [
     "bin",
