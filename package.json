@@ -17,26 +17,28 @@
   },
   "license": "BSD",
   "repository": "yeoman/node-gifsicle",
-  "main": "lib/gifsicle",
+  "main": "index.js",
   "bin": {
-    "gifsicle": "bin/gifsicle.js"
+    "gifsicle": "cli.js"
   },
   "scripts": {
-    "test": "mocha",
-    "postinstall": "node lib/check.js"
+    "test": "mocha --reporter list --timeout 0",
+    "postinstall": "node index.js"
   },
   "dependencies": {
-    "bin-wrapper": "~0.1.3",
+    "bin-wrapper": "https://github.com/kevva/bin-wrapper/archive/master.tar.gz",
     "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "bin-check": "~0.1.0",
+    "mocha": "~1.17.1",
+    "rimraf": "~2.2.6"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "files": [
-    "bin",
-    "lib"
+    "cli.js",
+    "index.js"
   ]
 }

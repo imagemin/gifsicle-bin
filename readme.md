@@ -4,11 +4,9 @@
 
 > gifsicle manipulates GIF image files in many different ways. Depending on command line options, it can merge several GIFs into a GIF animation; explode an animation into its component frames; change individual frames in an animation; turn interlacing on and off; add transparency and much more.
 
-
 ## Install
 
 Install with [npm](https://npmjs.org/package/gifsicle): `npm install --save gifsicle`
-
 
 ## Example usage
 
@@ -22,7 +20,6 @@ execFile(gifsiclePath, ['-o', 'output.gif', 'input.gif'], function() {
 ```
 
 Can also be run directly from `./node_modules/.bin/gifsicle`.
-
 
 ## Dev
 
@@ -41,7 +38,6 @@ Run `npm install` to build the binary.
 - Download the [Windows files 32/64-bit](http://www.lcdf.org/gifsicle/) on a Windows machine.
 - Run the downloaded file to extract.
 - Go to the `bin` folder at the destination and copy `gifsicle.exe`.
-
 
 ## License
 
