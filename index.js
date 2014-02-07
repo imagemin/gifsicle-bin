@@ -23,13 +23,16 @@ fs.exists(bin.path, function (exists) {
 	if (!exists) {
 		bin
 			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.71.tar.gz')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/osx/gifsicle', 'darwin')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x64/gifsicle', 'darwin')
 			.check()
 			.on('error', function (err) {
 				console.log(chalk.red('✗ ' + err.message));
 			})
 			.on('working', function () {
 				console.log(chalk.green('✓ pre-build test passed successfully'));
+			})
+			.on('build', function () {
+				console.log(chalk.green('✓ gifsicle rebuilt successfully'));
 			})
 			.on('fail', function () {
 				if (process.platform === 'win32') {
@@ -38,13 +41,7 @@ fs.exists(bin.path, function (exists) {
 
 				console.log(chalk.red('✗ pre-build test failed, compiling from source...'));
 
-				this.build(bs)
-					.on('build', function () {
-						console.log(chalk.green('✓ gifsicle rebuilt successfully'));
-					})
-					.on('error', function (err) {
-						console.log(chalk.red('✗ ' + err.message));
-					});
+				this.build(bs);
 			});
 	}
 });
