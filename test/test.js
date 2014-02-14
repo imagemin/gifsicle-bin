@@ -20,15 +20,15 @@ describe('gifsicle()', function () {
 
 	it('should rebuild the gifsicle binaries', function (cb) {
 		var bin = new BinWrapper({ bin: 'gifsicle', dest: path.join(__dirname, 'tmp') });
-		var script = './configure --disable-gifview --disable-gifdiff ' +
-					 '--prefix="' + bin.dest + '" ' +
-					 '--bindir="' + bin.dest + '" && ' +
-					 'make install';
+		var bs = './configure --disable-gifview --disable-gifdiff ' +
+				 '--prefix="' + bin.dest + '" ' +
+				 '--bindir="' + bin.dest + '" && ' +
+				 'make install';
 
 		bin
 			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.71.tar.gz')
-			.build(script)
-			.on('build', function () {
+			.build(bs)
+			.on('finish', function () {
 				cb(assert(true));
 			});
 	});

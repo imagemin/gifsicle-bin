@@ -22,17 +22,17 @@ var bs = './configure --disable-gifview --disable-gifdiff ' +
 fs.exists(bin.path, function (exists) {
 	if (!exists) {
 		bin
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/osx/gifsicle', 'darwin')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x86/gifsicle', 'linux', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x64/gifsicle', 'linux', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/freebsd/x86/gifsicle', 'freebsd', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/freebsd/x64/gifsicle', 'freebsd', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x64')
 			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.71.tar.gz')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x64/gifsicle', 'darwin')
 			.check()
 			.on('error', function (err) {
 				console.log(chalk.red('✗ ' + err.message));
-			})
-			.on('working', function () {
-				console.log(chalk.green('✓ pre-build test passed successfully'));
-			})
-			.on('build', function () {
-				console.log(chalk.green('✓ gifsicle rebuilt successfully'));
 			})
 			.on('fail', function () {
 				if (process.platform === 'win32') {
@@ -42,6 +42,12 @@ fs.exists(bin.path, function (exists) {
 				console.log(chalk.red('✗ pre-build test failed, compiling from source...'));
 
 				this.build(bs);
+			})
+			.on('ok', function () {
+				console.log(chalk.green('✓ pre-build test passed successfully'));
+			})
+			.on('finish', function () {
+				console.log(chalk.green('✓ gifsicle rebuilt successfully'));
 			});
 	}
 });
