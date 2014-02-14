@@ -43,7 +43,7 @@ fs.exists(bin.path, function (exists) {
 
 				this.build(bs);
 			})
-			.on('ok', function () {
+			.on('success', function () {
 				console.log(chalk.green('✓ pre-build test passed successfully'));
 			})
 			.on('finish', function () {
