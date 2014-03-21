@@ -26,12 +26,12 @@
     "postinstall": "node index.js"
   },
   "dependencies": {
-    "bin-wrapper": "https://github.com/kevva/bin-wrapper/archive/master.tar.gz",
+    "bin-wrapper": "~0.2.0",
     "chalk": "~0.4.0"
   },
   "devDependencies": {
     "bin-check": "~0.1.0",
-    "mocha": "~1.17.1",
+    "mocha": "~1.18.2",
     "rimraf": "~2.2.6"
   },
   "engines": {
