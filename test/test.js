@@ -26,7 +26,7 @@ describe('gifsicle()', function () {
 				 'make install';
 
 		bin
-			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.71.tar.gz')
+			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.80.tar.gz')
 			.build(bs)
 			.on('finish', function () {
 				cb(assert(true));

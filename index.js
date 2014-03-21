@@ -33,7 +33,7 @@ fs.exists(bin.path, function (exists) {
 			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/freebsd/x64/gifsicle', 'freebsd', 'x64')
 			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x86')
 			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x64')
-			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.71.tar.gz')
+			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.80.tar.gz')
 			.check()
 			.on('error', function () {
 				console.error(msg);
