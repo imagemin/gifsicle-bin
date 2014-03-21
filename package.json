@@ -1,6 +1,6 @@
 {
   "name": "gifsicle",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "keywords": [
     "gif",

@@ -26,13 +26,13 @@ var msg = chalk.red('\n✗ Installation of gifsicle failed\n\n') +
 fs.exists(bin.path, function (exists) {
 	if (!exists) {
 		bin
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/osx/gifsicle', 'darwin')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x86/gifsicle', 'linux', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/linux/x64/gifsicle', 'linux', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/freebsd/x86/gifsicle', 'freebsd', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/freebsd/x64/gifsicle', 'freebsd', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.4/vendor/win/x86/gifsicle.exe', 'win32', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/osx/gifsicle', 'darwin')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/linux/x86/gifsicle', 'linux', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/linux/x64/gifsicle', 'linux', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/freebsd/x86/gifsicle', 'freebsd', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/freebsd/x64/gifsicle', 'freebsd', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/win/x86/gifsicle.exe', 'win32', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/win/x86/gifsicle.exe', 'win32', 'x64')
 			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.80.tar.gz')
 			.check()
 			.on('error', function () {
