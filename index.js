@@ -14,10 +14,6 @@ var bs = './configure --disable-gifview --disable-gifdiff ' +
 		 '--prefix="' + bin.dest + '" ' +
 		 '--bindir="' + bin.dest + '" && ' +
 		 'make install';
-var msg = chalk.red('\n✗ Installation of gifsicle failed\n\n') +
-		  'Try installing the binary manually by visiting http://www.lcdf.org/gifsicle/\n' +
-		  'and choose the desired binary for your platform.\n\n' +
-		  'Then try reinstalling this module again.';
 
 /**
  * Only run check if binary doesn't already exist
@@ -35,8 +31,8 @@ fs.exists(bin.path, function (exists) {
 			.addUrl('https://raw.github.com/yeoman/node-gifsicle/0.1.5/vendor/win/x86/gifsicle.exe', 'win32', 'x64')
 			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.80.tar.gz')
 			.check()
-			.on('error', function () {
-				console.error(msg);
+			.on('error', function (err) {
+				console.log(chalk.red('✗ ' + err.message));
 			})
 			.on('fail', function () {
 				if (process.platform === 'win32') {
