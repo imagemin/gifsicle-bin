@@ -1,4 +1,4 @@
-# node-gifsicle [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle.png?branch=master)](http://travis-ci.org/yeoman/node-gifsicle)
+# node-gifsicle [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle.svg?branch=master)](http://travis-ci.org/yeoman/node-gifsicle)
 
 [gifsicle](http://www.lcdf.org/gifsicle/) 1.71 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows.
 
