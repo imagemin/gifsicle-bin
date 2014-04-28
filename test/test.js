@@ -3,7 +3,7 @@
 
 var assert = require('assert');
 var binCheck = require('bin-check');
-var BinWrapper = require('bin-wrapper');
+var BinBuild = require('bin-build');
 var fs = require('fs');
 var path = require('path');
 var spawn = require('child_process').spawn;
@@ -19,18 +19,17 @@ describe('gifsicle()', function () {
 	});
 
 	it('should rebuild the gifsicle binaries', function (cb) {
-		var bin = new BinWrapper({ bin: 'gifsicle', dest: path.join(__dirname, 'tmp') });
-		var bs = './configure --disable-gifview --disable-gifdiff ' +
-				 '--prefix="' + bin.dest + '" ' +
-				 '--bindir="' + bin.dest + '" && ' +
-				 'make install';
+		var tmp = path.join(__dirname, 'tmp');
+		var builder = new BinBuild()
+			.src('http://www.lcdf.org/gifsicle/gifsicle-1.83.tar.gz')
+			.cfg('./configure --disable-gifview --disable-gifdiff --prefix="' + tmp + '" --bindir="' + tmp + '"')
+			.make('make install');
 
-		bin
-			.addSource('http://www.lcdf.org/gifsicle/gifsicle-1.80.tar.gz')
-			.build(bs)
-			.on('finish', function () {
-				cb(assert(true));
-			});
+		builder.build(function (err) {
+			assert(!err);
+			assert(fs.existsSync(path.join(tmp, 'gifsicle')));
+			cb();
+		});
 	});
 
 	it('should return path to binary and verify that it is working', function (cb) {

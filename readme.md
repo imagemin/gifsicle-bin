@@ -6,38 +6,50 @@
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gifsicle): `npm install --save gifsicle`
+```bash
+$ npm install --save gifsicle
+```
 
-## Example usage
+## Usage
 
 ```js
 var execFile = require('child_process').execFile;
-var gifsiclePath = require('gifsicle').path;
+var gifsicle = require('gifsicle').path;
 
-execFile(gifsiclePath, ['-o', 'output.gif', 'input.gif'], function() {
+execFile(gifsicle, ['-o', 'output.gif', 'input.gif'], function (err) {
+	if (err) {
+		throw err;
+	}
+
 	console.log('Image minified');
 });
 ```
 
-Can also be run directly from `./node_modules/.bin/gifsicle`.
+## CLI
 
-## Dev
+```bash
+$ npm install --global gifsicle
+```
 
-Note to self on how to update the binaries.
+```bash
+$ gifsicle --help
+```
 
-### OS X
+## Development
 
-Run `npm install` on a OS X 10.7 machine to build the binary.
+Instructions for updating the binaries:
 
-### Linux
+### OS X and Linux
 
-Run `npm install` to build the binary.
+```bash
+$ npm install
+```
 
 ### Windows
 
-- Download the [Windows files 32/64-bit](http://www.lcdf.org/gifsicle/) on a Windows machine.
-- Run the downloaded file to extract.
-- Go to the `bin` folder at the destination and copy `gifsicle.exe`.
+* Download the [Windows files 32/64-bit](http://www.lcdf.org/gifsicle/) on a Windows machine
+* Run the downloaded file to extract
+* Go to the `bin` folder at the destination and copy `gifsicle.exe` to the `gifsicle/vendor/` folder
 
 ## License
 

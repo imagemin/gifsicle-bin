@@ -2,6 +2,27 @@
   "name": "gifsicle",
   "version": "0.1.5",
   "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
+  "license": "BSD",
+  "repository": "yeoman/gifsicle",
+  "author": {
+    "name": "Kevin Martensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "http://kevinmartensson.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "gifsicle": "cli.js"
+  },
+  "scripts": {
+    "test": "mocha --reporter list --timeout 0",
+    "postinstall": "node index.js"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
   "keywords": [
     "gif",
     "img",
@@ -10,35 +31,14 @@
     "minify",
     "optimize"
   ],
-  "author": {
-    "name": "Kevin Martensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "http://kevinmartensson.com"
-  },
-  "license": "BSD",
-  "repository": "yeoman/node-gifsicle",
-  "main": "index.js",
-  "bin": {
-    "gifsicle": "cli.js"
-  },
-  "scripts": {
-    "test": "mocha --reporter list --timeout 0",
-    "postinstall": "node index.js"
-  },
   "dependencies": {
-    "bin-wrapper": "~0.2.0",
-    "chalk": "~0.4.0"
+    "bin-build": "^0.1.0",
+    "bin-wrapper": "^0.3.0",
+    "chalk": "^0.4.0"
   },
   "devDependencies": {
-    "bin-check": "~0.1.0",
-    "mocha": "~1.18.2",
-    "rimraf": "~2.2.6"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "files": [
-    "cli.js",
-    "index.js"
-  ]
+    "bin-check": "^0.1.0",
+    "mocha": "^1.18.2",
+    "rimraf": "^2.2.6"
+  }
 }
