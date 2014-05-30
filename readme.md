@@ -1,47 +1,55 @@
-# node-gifsicle [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle.png?branch=master)](http://travis-ci.org/yeoman/node-gifsicle)
+# node-gifsicle [![Build Status](https://secure.travis-ci.org/yeoman/node-gifsicle.svg?branch=master)](http://travis-ci.org/yeoman/node-gifsicle)
 
 [gifsicle](http://www.lcdf.org/gifsicle/) 1.71 Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows.
 
 > gifsicle manipulates GIF image files in many different ways. Depending on command line options, it can merge several GIFs into a GIF animation; explode an animation into its component frames; change individual frames in an animation; turn interlacing on and off; add transparency and much more.
 
-
 ## Install
 
-Install with [npm](https://npmjs.org/package/gifsicle): `npm install --save gifsicle`
+```bash
+$ npm install --save gifsicle
+```
 
-
-## Example usage
+## Usage
 
 ```js
 var execFile = require('child_process').execFile;
-var gifsiclePath = require('gifsicle').path;
+var gifsicle = require('gifsicle').path;
 
-execFile(gifsiclePath, ['-o', 'output.gif', 'input.gif'], function() {
+execFile(gifsicle, ['-o', 'output.gif', 'input.gif'], function (err) {
+	if (err) {
+		throw err;
+	}
+
 	console.log('Image minified');
 });
 ```
 
-Can also be run directly from `./node_modules/.bin/gifsicle`.
+## CLI
 
+```bash
+$ npm install --global gifsicle
+```
 
-## Dev
+```bash
+$ gifsicle --help
+```
 
-Note to self on how to update the binaries.
+## Development
 
-### OS X
+Instructions for updating the binaries:
 
-Run `npm install` on a OS X 10.7 machine to build the binary.
+### OS X and Linux
 
-### Linux
-
-Run `npm install` to build the binary.
+```bash
+$ npm install
+```
 
 ### Windows
 
-- Download the [Windows files 32/64-bit](http://www.lcdf.org/gifsicle/) on a Windows machine.
-- Run the downloaded file to extract.
-- Go to the `bin` folder at the destination and copy `gifsicle.exe`.
-
+* Download the [Windows files 32/64-bit](http://www.lcdf.org/gifsicle/) on a Windows machine
+* Run the downloaded file to extract
+* Go to the `bin` folder at the destination and copy `gifsicle.exe` to the `gifsicle/vendor/` folder
 
 ## License
 
