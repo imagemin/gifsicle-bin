@@ -3,7 +3,7 @@
   "version": "0.1.5",
   "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "license": "BSD",
-  "repository": "yeoman/gifsicle",
+  "repository": "imagemin/gifsicle-bin",
   "author": {
     "name": "Kevin Martensson",
     "email": "kevinmartensson@gmail.com",
