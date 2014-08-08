@@ -1,6 +1,6 @@
 {
   "name": "gifsicle",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "gifsicle wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows",
   "license": "BSD",
   "repository": "imagemin/gifsicle-bin",
