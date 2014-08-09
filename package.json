@@ -32,7 +32,7 @@
     "optimize"
   ],
   "dependencies": {
-    "bin-build": "^0.1.0",
+    "bin-build": "^0.2.0",
     "bin-wrapper": "^0.3.0",
     "log-symbols": "^1.0.0"
   },

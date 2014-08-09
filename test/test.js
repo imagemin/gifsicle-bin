@@ -22,8 +22,8 @@ describe('gifsicle()', function () {
 		var tmp = path.join(__dirname, 'tmp');
 		var builder = new BinBuild()
 			.src('http://www.lcdf.org/gifsicle/gifsicle-1.83.tar.gz')
-			.cfg('./configure --disable-gifview --disable-gifdiff --prefix="' + tmp + '" --bindir="' + tmp + '"')
-			.make('make install');
+			.cmd('./configure --disable-gifview --disable-gifdiff --prefix="' + tmp + '" --bindir="' + tmp + '"')
+			.cmd('make install');
 
 		builder.build(function (err) {
 			assert(!err);

@@ -41,8 +41,8 @@ fs.exists(bin.use(), function (exists) {
 
 				var builder = new BinBuild()
 					.src('http://www.lcdf.org/gifsicle/gifsicle-' + BIN_VERSION + '.tar.gz')
-					.cfg('./configure --disable-gifview --disable-gifdiff --prefix="' + bin.dest() + '" --bindir="' + bin.dest() + '"')
-					.make('make install');
+					.cmd('./configure --disable-gifview --disable-gifdiff --prefix="' + bin.dest() + '" --bindir="' + bin.dest() + '"')
+					.cmd('make install');
 
 				return builder.build(function (err) {
 					if (err) {
