@@ -25,7 +25,7 @@ var bin = new BinWrapper()
 	.src(BASE_URL + 'freebsd/x86/gifsicle', 'freebsd', 'x86')
 	.src(BASE_URL + 'freebsd/x64/gifsicle', 'freebsd', 'x64')
 	.src(BASE_URL + 'win/x86/gifsicle.exe', 'win32', 'x86')
-	.src(BASE_URL + 'win/x86/gifsicle.exe', 'win32', 'x64')
+	.src(BASE_URL + 'win/x64/gifsicle.exe', 'win32', 'x64')
 	.dest(path.join(__dirname, 'vendor'))
 	.use(process.platform === 'win32' ? 'gifsicle.exe' : 'gifsicle');
 
