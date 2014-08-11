@@ -4,9 +4,9 @@
 var assert = require('assert');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
+var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
-var spawn = require('child_process').spawn;
 var rm = require('rimraf');
 
 describe('gifsicle()', function () {
@@ -35,8 +35,10 @@ describe('gifsicle()', function () {
 	it('should return path to binary and verify that it is working', function (cb) {
 		var binPath = require('../').path;
 
-		binCheck(binPath, '--version', function (err, works) {
-			cb(assert.equal(works, true));
+		binCheck(binPath, ['--version'], function (err, works) {
+			assert(!err);
+			assert.equal(works, true);
+			cb();
 		});
 	});
 
@@ -47,11 +49,13 @@ describe('gifsicle()', function () {
 			path.join(__dirname, 'fixtures/test.gif')
 		];
 
-		spawn(binPath, args).on('close', function () {
+		execFile(binPath, args, function (err) {
 			var src = fs.statSync(path.join(__dirname, 'fixtures/test.gif')).size;
 			var dest = fs.statSync(path.join(__dirname, 'tmp/test.gif')).size;
 
-			cb(assert(dest < src));
+			assert(!err);
+			assert(dest < src);
+			cb();
 		});
 	});
 });
