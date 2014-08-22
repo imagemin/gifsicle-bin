@@ -1,61 +1,61 @@
-/*global afterEach, beforeEach, describe, it */
 'use strict';
 
-var assert = require('assert');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
-var rm = require('rimraf');
+var test = require('ava');
 
-describe('gifsicle()', function () {
-	afterEach(function (cb) {
-		rm(path.join(__dirname, 'tmp'), cb);
-	});
+test('should rebuild the gifsicle binaries', function (t) {
+	t.plan(2);
 
-	beforeEach(function (cb) {
-		fs.mkdir(path.join(__dirname, 'tmp'), cb);
-	});
+	var tmp = path.join(__dirname, 'tmp');
+	var builder = new BinBuild()
+		.src('http://www.lcdf.org/gifsicle/gifsicle-1.83.tar.gz')
+		.cmd('./configure --disable-gifview --disable-gifdiff --prefix="' + tmp + '" --bindir="' + tmp + '"')
+		.cmd('make install');
 
-	it('should rebuild the gifsicle binaries', function (cb) {
-		var tmp = path.join(__dirname, 'tmp');
-		var builder = new BinBuild()
-			.src('http://www.lcdf.org/gifsicle/gifsicle-1.83.tar.gz')
-			.cmd('./configure --disable-gifview --disable-gifdiff --prefix="' + tmp + '" --bindir="' + tmp + '"')
-			.cmd('make install');
+	builder.build(function (err) {
+		t.assert(!err);
 
-		builder.build(function (err) {
-			assert(!err);
-			assert(fs.existsSync(path.join(tmp, 'gifsicle')));
-			cb();
+		fs.exists(path.join(tmp, 'gifsicle'), function (exists) {
+			t.assert(exists);
 		});
 	});
+});
 
-	it('should return path to binary and verify that it is working', function (cb) {
-		var binPath = require('../').path;
+test('should return path to binary and verify that it is working', function (t) {
+	t.plan(2);
 
-		binCheck(binPath, ['--version'], function (err, works) {
-			assert(!err);
-			assert.equal(works, true);
-			cb();
-		});
+	binCheck(require('../').path, ['--version'], function (err, works) {
+		t.assert(!err);
+		t.assert(works);
 	});
+});
 
-	it('should minify a GIF', function (cb) {
-		var binPath = require('../').path;
-		var args = [
-			'-o', path.join(__dirname, 'tmp/test.gif'),
-			path.join(__dirname, 'fixtures/test.gif')
-		];
+test('should minify a GIF', function (t) {
+	t.plan(5);
 
-		execFile(binPath, args, function (err) {
-			var src = fs.statSync(path.join(__dirname, 'fixtures/test.gif')).size;
-			var dest = fs.statSync(path.join(__dirname, 'tmp/test.gif')).size;
+	var args = [
+		'-o', path.join(__dirname, 'tmp/test.gif'),
+		path.join(__dirname, 'fixtures/test.gif')
+	];
 
-			assert(!err);
-			assert(dest < src);
-			cb();
+	fs.mkdir(path.join(__dirname, 'tmp'), function (err) {
+		t.assert(!err);
+
+		execFile(require('../').path, args, function (err) {
+			t.assert(!err);
+
+			fs.stat(path.join(__dirname, 'fixtures/test.gif'), function (err, a) {
+				t.assert(!err);
+
+				fs.stat(path.join(__dirname, 'tmp/test.gif'), function (err, b) {
+					t.assert(!err);
+					t.assert(b.size < a.size);
+				});
+			});
 		});
 	});
 });
