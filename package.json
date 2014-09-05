@@ -40,6 +40,8 @@
   },
   "devDependencies": {
     "ava": "0.0.4",
-    "bin-check": "^1.0.0"
+    "bin-check": "^1.0.0",
+    "mkdirp": "^0.5.0",
+    "rimraf": "^2.2.8"
   }
 }
