@@ -26,13 +26,13 @@ test('rebuild the gifsicle binaries', function (t) {
 		.cmd('make install');
 
 	builder.build(function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		fs.exists(path.join(tmp, bin.use()), function (exists) {
 			t.assert(exists);
 
 			rm(tmp, function (err) {
-				t.assert(!err);
+				t.assert(!err, err);
 			});
 		});
 	});
@@ -42,7 +42,7 @@ test('return path to binary and verify that it is working', function (t) {
 	t.plan(2);
 
 	binCheck(require('../').path, ['--version'], function (err, works) {
-		t.assert(!err);
+		t.assert(!err, err);
 		t.assert(works);
 	});
 });
@@ -58,17 +58,17 @@ test('minify a GIF', function (t) {
 	];
 
 	mkdir(tmp, function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		execFile(require('../').path, args, function (err) {
-			t.assert(!err);
+			t.assert(!err, err);
 
 			compareSize(src, dest, function (err, res) {
-				t.assert(!err);
+				t.assert(!err, err);
 				t.assert(res[dest] < res[src]);
 
 				rm(tmp, function (err) {
-					t.assert(!err);
+					t.assert(!err, err);
 				});
 			});
 		});
