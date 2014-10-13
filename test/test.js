@@ -1,6 +1,5 @@
 'use strict';
 
-var bin = require('../lib');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var compareSize = require('compare-size');
@@ -13,20 +12,21 @@ var tmp = path.join(__dirname, 'tmp');
 test('rebuild the gifsicle binaries', function (t) {
 	t.plan(2);
 
+	var version = require('../').version;
 	var cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
 		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
 	].join(' ');
 
 	var builder = new BinBuild()
-		.src('http://www.lcdf.org/gifsicle/gifsicle-' + bin.v + '.tar.gz')
+		.src('http://www.lcdf.org/gifsicle/gifsicle-' + version + '.tar.gz')
 		.cmd(cfg)
 		.cmd('make install');
 
 	builder.build(function (err) {
 		t.assert(!err, err);
 
-		fs.exists(path.join(tmp, bin.use()), function (exists) {
+		fs.exists(path.join(tmp, 'gifsicle'), function (exists) {
 			t.assert(exists);
 		});
 	});
