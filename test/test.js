@@ -20,6 +20,7 @@ test('rebuild the gifsicle binaries', function (t) {
 
 	var builder = new BinBuild()
 		.src('http://www.lcdf.org/gifsicle/gifsicle-' + version + '.tar.gz')
+		.cmd('autoreconf -ivf')
 		.cmd(cfg)
 		.cmd('make install');
 
