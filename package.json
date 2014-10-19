@@ -36,7 +36,7 @@
   "dependencies": {
     "bin-build": "^2.0.0",
     "bin-wrapper": "^2.0.0",
-    "log-symbols": "^1.0.0"
+    "imagemin-log": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.0.4",
