@@ -23,7 +23,7 @@ test('rebuild the gifsicle binaries', function (t) {
 		.cmd(cfg)
 		.cmd('make install');
 
-	builder.build(function (err) {
+	builder.run(function (err) {
 		t.assert(!err, err);
 
 		fs.exists(path.join(tmp, 'gifsicle'), function (exists) {
