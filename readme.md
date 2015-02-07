@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save gifsicle
 ```
 
@@ -17,10 +17,6 @@ var execFile = require('child_process').execFile;
 var gifsicle = require('gifsicle').path;
 
 execFile(gifsicle, ['-o', 'output.gif', 'input.gif'], function (err) {
-	if (err) {
-		throw err;
-	}
-
 	console.log('Image minified!');
 });
 ```
@@ -28,11 +24,11 @@ execFile(gifsicle, ['-o', 'output.gif', 'input.gif'], function (err) {
 
 ## CLI
 
-```sh
+```
 $ npm install --global gifsicle
 ```
 
-```sh
+```
 $ gifsicle --help
 ```
 

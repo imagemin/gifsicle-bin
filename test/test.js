@@ -12,24 +12,20 @@ var tmp = path.join(__dirname, 'tmp');
 test('rebuild the gifsicle binaries', function (t) {
 	t.plan(2);
 
-	var version = require('../').version;
 	var cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
 		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
 	].join(' ');
 
 	var builder = new BinBuild()
-		.src('http://www.lcdf.org/gifsicle/gifsicle-' + version + '.tar.gz')
+		.src('http://www.lcdf.org/gifsicle/gifsicle-1.87.tar.gz')
 		.cmd('autoreconf -ivf')
 		.cmd(cfg)
 		.cmd('make install');
 
 	builder.run(function (err) {
 		t.assert(!err, err);
-
-		fs.exists(path.join(tmp, 'gifsicle'), function (exists) {
-			t.assert(exists);
-		});
+		t.assert(fs.statSync(path.join(tmp, 'gifsicle')).isFile());
 	});
 });
 
