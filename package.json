@@ -16,8 +16,8 @@
     "gifsicle": "cli.js"
   },
   "scripts": {
-    "test": "mkdir test/tmp && node test/test.js && rm -rf test/tmp",
-    "postinstall": "node lib/install.js"
+    "postinstall": "node lib/install.js",
+    "test": "mocha --timeout 50000"
   },
   "files": [
     "cli.js",
@@ -38,8 +38,10 @@
     "logalot": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "^0.0.4",
     "bin-check": "^1.0.0",
-    "compare-size": "^1.0.0"
+    "compare-size": "^1.0.0",
+    "mkdirp": "^0.5.0",
+    "mocha": "^2.2.4",
+    "rimraf": "^2.3.2"
   }
 }

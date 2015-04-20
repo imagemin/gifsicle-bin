@@ -1,46 +1,52 @@
+/*global afterEach,beforeEach,it*/
 'use strict';
 
+var assert = require('assert');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
-var test = require('ava');
+var mkdirp = require('mkdirp');
+var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
-test('rebuild the gifsicle binaries', function (t) {
-	t.plan(2);
+beforeEach(function () {
+	mkdirp.sync(tmp);
+});
 
+afterEach(function () {
+	rimraf.sync(tmp);
+});
+
+it('rebuild the gifsicle binaries', function (cb) {
 	var cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
 		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
 	].join(' ');
 
-	var builder = new BinBuild()
+	new BinBuild()
 		.src('http://www.lcdf.org/gifsicle/gifsicle-1.87.tar.gz')
 		.cmd('autoreconf -ivf')
 		.cmd(cfg)
-		.cmd('make install');
-
-	builder.run(function (err) {
-		t.assert(!err, err);
-		t.assert(fs.statSync(path.join(tmp, 'gifsicle')).isFile());
-	});
+		.cmd('make install')
+		.run(function (err) {
+			assert(!err);
+			assert(fs.statSync(path.join(tmp, 'gifsicle')).isFile());
+			cb();
+		});
 });
 
-test('return path to binary and verify that it is working', function (t) {
-	t.plan(2);
-
+it('return path to binary and verify that it is working', function (cb) {
 	binCheck(require('../').path, ['--version'], function (err, works) {
-		t.assert(!err, err);
-		t.assert(works);
+		assert(!err);
+		assert(works);
+		cb();
 	});
 });
 
-test('minify a GIF', function (t) {
-	t.plan(3);
-
+it('minify a GIF', function (cb) {
 	var src = path.join(__dirname, 'fixtures/test.gif');
 	var dest = path.join(tmp, 'test.gif');
 	var args = [
@@ -49,11 +55,12 @@ test('minify a GIF', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err, err);
+		assert(!err);
 
 		compareSize(src, dest, function (err, res) {
-			t.assert(!err, err);
-			t.assert(res[dest] < res[src]);
+			assert(!err);
+			assert(res[dest] < res[src]);
+			cb();
 		});
 	});
 });
