@@ -7,21 +7,19 @@
   "author": {
     "name": "Kevin Martensson",
     "email": "kevinmartensson@gmail.com",
-    "url": "http://kevinmartensson.com"
+    "url": "kevinmartensson.com"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "bin": {
-    "gifsicle": "cli.js"
-  },
+  "bin": "cli.js",
   "scripts": {
     "postinstall": "node lib/install.js",
     "test": "mocha --timeout 50000"
   },
   "files": [
-    "cli.js",
     "index.js",
+    "cli.js",
     "lib"
   ],
   "keywords": [
