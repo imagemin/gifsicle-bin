@@ -27,7 +27,7 @@ it('rebuild the gifsicle binaries', function (cb) {
 	].join(' ');
 
 	new BinBuild()
-		.src('http://www.lcdf.org/gifsicle/gifsicle-1.88.tar.gz')
+		.src('https://github.com/kohler/gifsicle/archive/v1.88.tar.gz')
 		.cmd('autoreconf -ivf')
 		.cmd(cfg)
 		.cmd('make install')
