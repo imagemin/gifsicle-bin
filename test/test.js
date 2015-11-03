@@ -12,12 +12,12 @@ var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
-beforeEach(function () {
-	mkdirp.sync(tmp);
+beforeEach(function (cb) {
+	mkdirp(tmp, cb);
 });
 
-afterEach(function () {
-	rimraf.sync(tmp);
+afterEach(function (cb) {
+	rimraf(tmp, {disableGlob: true}, cb);
 });
 
 it('rebuild the gifsicle binaries', function (cb) {
@@ -32,7 +32,11 @@ it('rebuild the gifsicle binaries', function (cb) {
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(fs.statSync(path.join(tmp, 'gifsicle')).isFile());
 			cb();
 		});
@@ -40,7 +44,11 @@ it('rebuild the gifsicle binaries', function (cb) {
 
 it('return path to binary and verify that it is working', function (cb) {
 	binCheck(require('../'), ['--version'], function (err, works) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
+
 		assert(works);
 		cb();
 	});
@@ -55,10 +63,17 @@ it('minify a GIF', function (cb) {
 	];
 
 	execFile(require('../'), args, function (err) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
 
 		compareSize(src, dest, function (err, res) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(res[dest] < res[src]);
 			cb();
 		});
