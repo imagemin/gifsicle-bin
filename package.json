@@ -15,7 +15,7 @@
   "bin": "cli.js",
   "scripts": {
     "postinstall": "node lib/install.js",
-    "test": "mocha --timeout 50000"
+    "test": "xo && mocha --timeout 50000"
   },
   "files": [
     "index.js",
@@ -40,6 +40,7 @@
     "compare-size": "^1.0.0",
     "mkdirp": "^0.5.0",
     "mocha": "^2.2.4",
-    "rimraf": "^2.3.2"
+    "rimraf": "^2.3.2",
+    "xo": "*"
   }
 }
