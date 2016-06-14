@@ -1,13 +1,12 @@
 /* eslint-env mocha */
 'use strict';
-
+var execFile = require('child_process').execFile;
+var fs = require('fs');
+var path = require('path');
 var assert = require('assert');
 var binCheck = require('bin-check');
 var BinBuild = require('bin-build');
 var compareSize = require('compare-size');
-var execFile = require('child_process').execFile;
-var fs = require('fs');
-var path = require('path');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
