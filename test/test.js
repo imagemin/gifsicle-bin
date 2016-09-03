@@ -9,6 +9,7 @@ var BinBuild = require('bin-build');
 var compareSize = require('compare-size');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
+
 var tmp = path.join(__dirname, 'tmp');
 
 beforeEach(function (cb) {
