@@ -1,29 +1,19 @@
-/* eslint-env mocha */
 'use strict';
-var execFile = require('child_process').execFile;
-var fs = require('fs');
-var path = require('path');
-var assert = require('assert');
-var binCheck = require('bin-check');
-var BinBuild = require('bin-build');
-var compareSize = require('compare-size');
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
+const fs = require('fs');
+const path = require('path');
+const test = require('ava');
+const execa = require('execa');
+const tempy = require('tempy');
+const binCheck = require('bin-check');
+const BinBuild = require('bin-build');
+const compareSize = require('compare-size');
+const gifsicle = require('..');
 
-var tmp = path.join(__dirname, 'tmp');
-
-beforeEach(function (cb) {
-	mkdirp(tmp, cb);
-});
-
-afterEach(function (cb) {
-	rimraf(tmp, {disableGlob: true}, cb);
-});
-
-it('rebuild the gifsicle binaries', function (cb) {
-	var cfg = [
+test.cb('rebuild the gifsicle binaries', t => {
+	const tmp = tempy.directory();
+	const cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
-		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
+		`--prefix="${tmp}" --bindir="${tmp}"`
 	].join(' ');
 
 	new BinBuild()
@@ -31,51 +21,28 @@ it('rebuild the gifsicle binaries', function (cb) {
 		.cmd('autoreconf -ivf')
 		.cmd(cfg)
 		.cmd('make install')
-		.run(function (err) {
-			if (err) {
-				cb(err);
-				return;
-			}
-
-			assert(fs.statSync(path.join(tmp, 'gifsicle')).isFile());
-			cb();
+		.run(err => {
+			t.ifError(err);
+			t.true(fs.existsSync(path.join(tmp, 'gifsicle')));
+			t.end();
 		});
 });
 
-it('return path to binary and verify that it is working', function (cb) {
-	binCheck(require('../'), ['--version'], function (err, works) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		assert(works);
-		cb();
-	});
+test('return path to binary and verify that it is working', async t => {
+	t.true(await binCheck(gifsicle, ['--version']));
 });
 
-it('minify a GIF', function (cb) {
-	var src = path.join(__dirname, 'fixtures/test.gif');
-	var dest = path.join(tmp, 'test.gif');
-	var args = [
+test('minify a GIF', async t => {
+	const tmp = tempy.directory();
+	const src = path.join(__dirname, 'fixtures/test.gif');
+	const dest = path.join(tmp, 'test.gif');
+	const args = [
 		'-o', dest,
 		src
 	];
 
-	execFile(require('../'), args, function (err) {
-		if (err) {
-			cb(err);
-			return;
-		}
+	await execa(gifsicle, args);
+	const res = await compareSize(src, dest);
 
-		compareSize(src, dest, function (err, res) {
-			if (err) {
-				cb(err);
-				return;
-			}
-
-			assert(res[dest] < res[src]);
-			cb();
-		});
-	});
+	t.true(res[dest] < res[src]);
 });
