@@ -15,7 +15,7 @@ $ npm install --save gifsicle
 ## Usage
 
 ```js
-const execFile = require('child_process').execFile;
+const {execFile} = require('child_process');
 const gifsicle = require('gifsicle');
 
 execFile(gifsicle, ['-o', 'output.gif', 'input.gif'], err => {
