@@ -7,7 +7,7 @@ const tempy = require('tempy');
 const binCheck = require('bin-check');
 const BinBuild = require('bin-build');
 const compareSize = require('compare-size');
-const gifsicle = require('..');
+const m = require('.');
 
 test.cb('rebuild the gifsicle binaries', t => {
 	const tmp = tempy.directory();
@@ -28,11 +28,11 @@ test.cb('rebuild the gifsicle binaries', t => {
 		});
 });
 
-test('return path to binary and verify that it is working', async t => {
-	t.true(await binCheck(gifsicle, ['--version']));
+test('verify binary', async t => {
+	t.true(await binCheck(m, ['--version']));
 });
 
-test('minify a GIF', async t => {
+test('minify a gif', async t => {
 	const tmp = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.gif');
 	const dest = path.join(tmp, 'test.gif');
@@ -41,7 +41,7 @@ test('minify a GIF', async t => {
 		src
 	];
 
-	await execa(gifsicle, args);
+	await execa(m, args);
 	const res = await compareSize(src, dest);
 
 	t.true(res[dest] < res[src]);

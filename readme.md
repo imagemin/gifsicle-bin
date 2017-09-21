@@ -8,7 +8,7 @@ You probably want [`imagemin-gifsicle`](https://github.com/imagemin/imagemin-gif
 ## Install
 
 ```
-$ npm install --save gifsicle
+$ npm install gifsicle
 ```
 
 
