@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const spawn = require('child_process').spawn;
-const gifsicle = require('.');
+const execa = require('execa');
+const m = require('.');
 
-const input = process.argv.slice(2);
-
-spawn(gifsicle, input, {stdio: 'inherit'})
-	.on('exit', process.exit);
+execa(m, process.argv.slice(2), {stdio: 'inherit'});
