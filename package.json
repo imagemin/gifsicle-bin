@@ -22,7 +22,7 @@
 	],
 	"bin": "cli.js",
 	"engines": {
-		"node": ">=4"
+		"node": ">=6"
 	},
 	"scripts": {
 		"postinstall": "node lib/install.js",
@@ -45,8 +45,8 @@
 	],
 	"dependencies": {
 		"bin-build": "^3.0.0",
-		"bin-wrapper": "^3.0.0",
-		"execa": "^0.8.0",
+		"bin-wrapper": "^4.0.0",
+		"execa": "^0.10.0",
 		"logalot": "^2.0.0"
 	},
 	"devDependencies": {
