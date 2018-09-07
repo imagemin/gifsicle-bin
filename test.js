@@ -9,6 +9,14 @@ const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const m = require('.');
 
+async function makeExecutable() {
+	try {
+		await execa('chmod', ['+x', m]);
+	} catch (_) {
+		console.log('not executable');
+	}
+}
+
 test('rebuild the gifsicle binaries', async t => {
 	const tmp = tempy.directory();
 	const cfg = [
@@ -26,10 +34,12 @@ test('rebuild the gifsicle binaries', async t => {
 });
 
 test('verify binary', async t => {
+	makeExecutable();
 	t.true(await binCheck(m, ['--version']));
 });
 
 test('minify a gif', async t => {
+	makeExecutable();
 	const tmp = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.gif');
 	const dest = path.join(tmp, 'test.gif');
