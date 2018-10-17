@@ -1,5 +1,5 @@
 {
-	"name": "gifsicle",
+	"name": "@dinamomx/gifsicle",
 	"version": "3.0.4",
 	"description": "gifsicle wrapper that makes it seamlessly available as a local dependency",
 	"license": "MIT",
@@ -7,17 +7,24 @@
 	"author": {
 		"name": "Kevin Martensson",
 		"email": "kevinmartensson@gmail.com",
-		"url": "github.com/kevva"
+		"url": "https://github.com/kevva"
 	},
+	"contributors": [
+		{
+			"name": "César Valadez",
+			"email": "cesar@wdinamo.com",
+			"url": "https://dinamo.mx"
+		}
+	],
 	"maintainers": [
 		{
 			"name": "Sindre Sorhus",
 			"email": "sindresorhus@gmail.com",
-			"url": "sindresorhus.com"
+			"url": "https://sindresorhus.com"
 		},
 		{
 			"name": "Shinnosuke Watanabe",
-			"url": "github.com/shinnn"
+			"url": "https://github.com/shinnn"
 		}
 	],
 	"bin": "cli.js",
@@ -46,7 +53,7 @@
 	"dependencies": {
 		"bin-build": "^3.0.0",
 		"bin-wrapper": "^4.0.0",
-		"execa": "^0.10.0",
+		"execa": "^1.0.0",
 		"logalot": "^2.0.0"
 	},
 	"devDependencies": {
@@ -54,6 +61,6 @@
 		"bin-check": "^4.0.1",
 		"compare-size": "^3.0.0",
 		"tempy": "^0.2.1",
-		"xo": "*"
+		"xo": "^0.23.0"
 	}
 }
