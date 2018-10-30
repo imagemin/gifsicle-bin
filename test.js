@@ -34,7 +34,8 @@ test('minify a gif', async t => {
 	const src = path.join(__dirname, 'fixtures/test.gif');
 	const dest = path.join(tmp, 'test.gif');
 	const args = [
-		'-o', dest,
+		'-o',
+		dest,
 		src
 	];
 
