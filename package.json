@@ -1,6 +1,6 @@
 {
 	"name": "gifsicle",
-	"version": "3.0.4",
+	"version": "4.0.0",
 	"description": "gifsicle wrapper that makes it seamlessly available as a local dependency",
 	"license": "MIT",
 	"repository": "imagemin/gifsicle-bin",
