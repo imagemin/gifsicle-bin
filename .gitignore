@@ -1,3 +1,4 @@
 node_modules
 vendor/gifsicle*
+vendor/share/man
 yarn.lock
