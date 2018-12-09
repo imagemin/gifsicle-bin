@@ -7,9 +7,15 @@ const tempy = require('tempy');
 const binCheck = require('bin-check');
 const binBuild = require('bin-build');
 const compareSize = require('compare-size');
-const m = require('.');
+const m = require('..');
 
 test('rebuild the gifsicle binaries', async t => {
+	// Skip the test on Windows
+	if (process.platform === 'win32') {
+		t.pass();
+		return;
+	}
+
 	const tmp = tempy.directory();
 	const cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
