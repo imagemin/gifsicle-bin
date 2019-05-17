@@ -22,7 +22,7 @@ test('rebuild the gifsicle binaries', async t => {
 		`--prefix="${tmp}" --bindir="${tmp}"`
 	].join(' ');
 
-	await binBuild.url('https://github.com/kohler/gifsicle/archive/v1.90.tar.gz', [
+	await binBuild.url('https://github.com/kohler/gifsicle/archive/v1.92.tar.gz', [
 		'autoreconf -ivf',
 		cfg,
 		'make install'
