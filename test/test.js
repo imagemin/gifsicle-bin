@@ -9,7 +9,7 @@ const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const m = require('..');
 
-test('rebuild the gifsicle binaries', async t => {
+test.serial('rebuild the gifsicle binaries', async t => {
 	// Skip the test on Windows
 	if (process.platform === 'win32') {
 		t.pass();
@@ -31,11 +31,11 @@ test('rebuild the gifsicle binaries', async t => {
 	t.true(fs.existsSync(path.join(tmp, 'gifsicle')));
 });
 
-test('verify binary', async t => {
+test.serial('verify binary', async t => {
 	t.true(await binCheck(m, ['--version']));
 });
 
-test('minify a gif', async t => {
+test.serial('minify a gif', async t => {
 	const tmp = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.gif');
 	const dest = path.join(tmp, 'test.gif');

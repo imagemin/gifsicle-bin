@@ -4,22 +4,7 @@
 	"description": "gifsicle wrapper that makes it seamlessly available as a local dependency",
 	"license": "MIT",
 	"repository": "imagemin/gifsicle-bin",
-	"author": {
-		"name": "Kevin Martensson",
-		"email": "kevinmartensson@gmail.com",
-		"url": "github.com/kevva"
-	},
-	"maintainers": [
-		{
-			"name": "Sindre Sorhus",
-			"email": "sindresorhus@gmail.com",
-			"url": "sindresorhus.com"
-		},
-		{
-			"name": "Shinnosuke Watanabe",
-			"url": "github.com/shinnn"
-		}
-	],
+	"funding": "https://github.com/imagemin/gisicle-bin?sponsor=1",
 	"bin": "cli.js",
 	"engines": {
 		"node": ">=6"
@@ -51,10 +36,10 @@
 		"logalot": "^2.0.0"
 	},
 	"devDependencies": {
-		"ava": "*",
+		"ava": "^1.4.1",
 		"bin-check": "^4.0.1",
 		"compare-size": "^3.0.0",
 		"tempy": "^0.2.1",
-		"xo": "*"
+		"xo": "^0.18.0"
 	}
 }
