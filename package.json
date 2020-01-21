@@ -7,7 +7,7 @@
 	"funding": "https://github.com/imagemin/gisicle-bin?sponsor=1",
 	"bin": "cli.js",
 	"engines": {
-		"node": ">=6"
+		"node": ">=10"
 	},
 	"scripts": {
 		"postinstall": "node lib/install.js",
@@ -40,6 +40,6 @@
 		"bin-check": "^4.0.1",
 		"compare-size": "^3.0.0",
 		"tempy": "^0.2.1",
-		"xo": "^0.18.0"
+		"xo": "^0.25.3"
 	}
 }
