@@ -16,10 +16,10 @@ test.serial('rebuild the gifsicle binaries', async t => {
 		return;
 	}
 
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
-		`--prefix="${tmp}" --bindir="${tmp}"`
+		`--prefix="${temporary}" --bindir="${temporary}"`
 	].join(' ');
 
 	await binBuild.url('https://github.com/kohler/gifsicle/archive/v1.92.tar.gz', [
@@ -28,7 +28,7 @@ test.serial('rebuild the gifsicle binaries', async t => {
 		'make install'
 	]);
 
-	t.true(fs.existsSync(path.join(tmp, 'gifsicle')));
+	t.true(fs.existsSync(path.join(temporary, 'gifsicle')));
 });
 
 test.serial('verify binary', async t => {
@@ -36,9 +36,9 @@ test.serial('verify binary', async t => {
 });
 
 test.serial('minify a gif', async t => {
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.gif');
-	const dest = path.join(tmp, 'test.gif');
+	const dest = path.join(temporary, 'test.gif');
 	const args = [
 		'-o',
 		dest,
@@ -46,7 +46,7 @@ test.serial('minify a gif', async t => {
 	];
 
 	await execa(m, args);
-	const res = await compareSize(src, dest);
+	const result = await compareSize(src, dest);
 
-	t.true(res[dest] < res[src]);
+	t.true(result[dest] < result[src]);
 });
