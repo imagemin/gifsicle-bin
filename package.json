@@ -1,11 +1,15 @@
 {
 	"name": "gifsicle",
-	"version": "5.1.0",
+	"version": "5.2.0",
 	"description": "gifsicle wrapper that makes it seamlessly available as a local dependency",
 	"license": "MIT",
 	"repository": "imagemin/gifsicle-bin",
-	"funding": "https://github.com/imagemin/gisicle-bin?sponsor=1",
-	"bin": "cli.js",
+	"funding": {
+		"url": "https://github.com/imagemin/gisicle-bin?sponsor=1"
+	},
+	"bin": {
+		"gifsicle": "cli.js"
+	},
 	"engines": {
 		"node": ">=10"
 	},
