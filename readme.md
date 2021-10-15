@@ -10,6 +10,9 @@ You probably want [`imagemin-gifsicle`](https://github.com/imagemin/imagemin-gif
 $ npm install gifsicle
 ```
 
+If you are pulling through your own proxy, you can get `GITHUB_RAW_URL` during install
+to ensure that the prebuilt binary is also pulled through your mirror.
+
 ## Usage
 
 ```js
