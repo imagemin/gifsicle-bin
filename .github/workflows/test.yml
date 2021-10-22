@@ -1,4 +1,4 @@
-name: CI
+name: test
 on:
   - push
   - pull_request
@@ -9,9 +9,9 @@ jobs:
     strategy:
       matrix:
         node-version:
+          - 16
           - 14
           - 12
-          - 10
         os:
           - ubuntu-latest
           - macos-latest
