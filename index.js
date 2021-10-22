@@ -1,2 +1,3 @@
-'use strict';
-module.exports = require('./lib').path(); /* eslint-disable-line import/extensions */
+import lib from './lib/index.js';
+
+export default lib.path();
