@@ -23,7 +23,7 @@ test.serial('rebuild the gifsicle binaries', async t => {
 		`--prefix="${temporary}" --bindir="${temporary}"`,
 	].join(' ');
 
-	const source = fileURLToPath(new URL('../vendor/source/gifsicle-1.92.tar.gz', import.meta.url));
+	const source = fileURLToPath(new URL('../vendor/source/gifsicle-1.93.tar.gz', import.meta.url));
 	await binBuild.file(source, [
 		'autoreconf -ivf',
 		cfg,
