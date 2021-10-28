@@ -8,6 +8,7 @@
 	"funding": {
 		"url": "https://github.com/imagemin/gisicle-bin?sponsor=1"
 	},
+	"main": "index.js",
 	"bin": {
 		"gifsicle": "cli.js"
 	},
