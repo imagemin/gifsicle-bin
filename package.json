@@ -5,10 +5,10 @@
 	"license": "MIT",
 	"repository": "imagemin/gifsicle-bin",
 	"type": "module",
+	"exports": "./index.js",
 	"funding": {
 		"url": "https://github.com/imagemin/gisicle-bin?sponsor=1"
 	},
-	"main": "index.js",
 	"bin": {
 		"gifsicle": "cli.js"
 	},
