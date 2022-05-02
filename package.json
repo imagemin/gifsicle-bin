@@ -41,10 +41,10 @@
 		"execa": "^6.1.0"
 	},
 	"devDependencies": {
-		"ava": "^4.1.0",
+		"ava": "^4.2.0",
 		"bin-check": "^4.0.1",
 		"compare-size": "^3.0.0",
-		"tempy": "^2.0.0",
+		"tempy": "^3.0.0",
 		"xo": "^0.48.0"
 	}
 }

@@ -4,7 +4,7 @@ import process from 'node:process';
 import {fileURLToPath} from 'node:url';
 import test from 'ava';
 import {execa} from 'execa';
-import tempy from 'tempy';
+import {temporaryDirectory} from 'tempy';
 import binCheck from 'bin-check';
 import binBuild from 'bin-build';
 import compareSize from 'compare-size';
@@ -17,7 +17,7 @@ test.serial('rebuild the gifsicle binaries', async t => {
 		return;
 	}
 
-	const temporary = tempy.directory();
+	const temporary = temporaryDirectory();
 	const cfg = [
 		'./configure --disable-gifview --disable-gifdiff',
 		`--prefix="${temporary}" --bindir="${temporary}"`,
@@ -38,7 +38,7 @@ test.serial('verify binary', async t => {
 });
 
 test.serial('minify a gif', async t => {
-	const temporary = tempy.directory();
+	const temporary = temporaryDirectory();
 	const src = fileURLToPath(new URL('fixtures/test.gif', import.meta.url));
 	const dest = path.join(temporary, 'test.gif');
 	const args = [
