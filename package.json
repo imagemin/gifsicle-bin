@@ -7,7 +7,7 @@
 	"type": "module",
 	"exports": "./index.js",
 	"funding": {
-		"url": "https://github.com/imagemin/gisicle-bin?sponsor=1"
+		"url": "https://github.com/imagemin/gifsicle-bin?sponsor=1"
 	},
 	"bin": {
 		"gifsicle": "cli.js"
