@@ -2,7 +2,7 @@
 	"name": "gifsicle",
 	"version": "7.0.1",
 	"description": "gifsicle wrapper that makes it seamlessly available as a local dependency",
-	"license": "MIT",
+	"license": "GPL-2.0",
 	"repository": "imagemin/gifsicle-bin",
 	"type": "module",
 	"exports": "./index.js",
