@@ -36,8 +36,8 @@
 		"gifsicle"
 	],
 	"dependencies": {
+		"@mole-inc/bin-wrapper": "8.0.1",
 		"bin-build": "^3.0.0",
-		"bin-wrapper": "^4.0.0",
 		"execa": "^6.1.0"
 	},
 	"devDependencies": {
